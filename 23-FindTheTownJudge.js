@@ -35,23 +35,35 @@ trust[i][0] != trust[i][1]
  * @return {number}
  */
 var findJudge = function(N, trust) {
-    let howManyPplIItrust = new Array(N).fill(0);
-    let howManyPplTrustMe = new Array(N).fill(0);
+   let count = new Array(N+1).fill(0)
+        for (let [u,v] of trust) {
+            count[u]--;
+            count[v]++;
+        }
+    
+        for (let i = 1; i <= N; ++i) {
+            if (count[i] == N - 1) return i;
+        }
+        return -1;
+ 
+ 
+//     let howManyPplIItrust = new Array(N).fill(0);
+//     let howManyPplTrustMe = new Array(N).fill(0);
     
   
-    for(let pairsIndex = 0; pairsIndex < trust.length; pairsIndex++) {
-      let manWhoTrusts = trust[pairsIndex][0];
-      let manWhoIsTrusted = trust[pairsIndex][1];
+//     for(let pairsIndex = 0; pairsIndex < trust.length; pairsIndex++) {
+//       let manWhoTrusts = trust[pairsIndex][0];
+//       let manWhoIsTrusted = trust[pairsIndex][1];
   
-      howManyPplIItrust[manWhoTrusts - 1]++;
-      howManyPplTrustMe[manWhoIsTrusted - 1]++;
-    }
-    for(let i = 0; i < N; i++) {
-      if(howManyPplTrustMe[i]=== N-1 && howManyPplIItrust[i] === 0) {
-        return i+1;
-      }
-    }
+//       howManyPplIItrust[manWhoTrusts - 1]++;
+//       howManyPplTrustMe[manWhoIsTrusted - 1]++;
+//     }
+//     for(let i = 0; i < N; i++) {
+//       if(howManyPplTrustMe[i]=== N-1 && howManyPplIItrust[i] === 0) {
+//         return i+1;
+//       }
+//     }
   
-    return -1;
+//     return -1;
   };
 
