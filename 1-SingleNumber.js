@@ -13,6 +13,21 @@ Example 2:
 Input: [4,1,2,1,2]
 Output: 4 */
 
+//FIRST:
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    let result = 0;
+    for (let i in nums)
+    {
+		result ^=nums[i];
+    }
+	return result;
+};
+
+//SECOND:
 /**
  * @param {number[]} nums
  * @return {number}
