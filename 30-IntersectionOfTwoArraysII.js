@@ -12,7 +12,27 @@ Note:
 
 Each element in the result should appear as many times as it shows in both arrays.
 The result can be in any order */
+//FIRST:
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function(nums1, nums2) {
+    let ans=[]
+    if(!nums1.length || !nums2.length) return ans;
+    
+    for(let i in nums1){
+        if(nums2.includes(nums1[i])){
+            ans.push(nums1[i])
+            let d= nums2.indexOf(nums1[i])
+            nums2.splice(d,1)
+        }
+    }
+    return ans
+};
 
+//SECOND:
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
